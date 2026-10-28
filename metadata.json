@@ -1,0 +1,6 @@
+{
+  "name": "Starbubble Realms",
+  "description": "Precision 3D magic bubble shooter by Playera featuring 4,321 enchanted worlds, custom 3D bubble shooters, an animated 3D GLB sorceress, emotes vault, and power orbs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

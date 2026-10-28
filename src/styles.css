@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "tailwindcss";
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #0b1120;
+    color: #f8fafc;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .font-mono-tabular {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .safe-top {
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+  }
+
+  .safe-bottom {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  img {
+    image-rendering: auto;
+  }
+}
+
+/* Smooth GPU-composited floating score popups (zero per-frame Angular DOM thrash) */
+@keyframes popupFloatUpFade {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -30%, 0) scale(0.84);
+  }
+  16% {
+    opacity: 1;
+    transform: translate3d(-50%, -65%, 0) scale(1.04);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-50%, -195%, 0) scale(0.96);
+  }
+}
+
+.score-popup-float {
+  animation: popupFloatUpFade 1.05s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Smooth Modern Enter Animations for Worlds Touch Carousel */
+@keyframes worldEnterFromRight {
+  0% { opacity: 0.25; transform: translate3d(72px, 0, 0) scale(0.94); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes worldEnterFromLeft {
+  0% { opacity: 0.25; transform: translate3d(-72px, 0, 0) scale(0.94); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+.world-slide-next {
+  animation: worldEnterFromRight 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.world-slide-prev {
+  animation: worldEnterFromLeft 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ==========================================================================
+   8K World Complete Cinematic Flight Video Choreography
+   (Magic Girl Soaring Across the Sky from Completed World -> Next World!)
+   ========================================================================== */
+@keyframes sorceressWorldFlightArc {
+  0% {
+    transform: translate3d(-44vw, 22vh, 0) rotate(-14deg) scale(0.86);
+  }
+  26% {
+    transform: translate3d(-16vw, -6vh, 0) rotate(-6deg) scale(1.05);
+  }
+  54% {
+    transform: translate3d(4vw, -12vh, 0) rotate(3deg) scale(1.12);
+  }
+  80% {
+    transform: translate3d(24vw, -3vh, 0) rotate(9deg) scale(1.02);
+  }
+  100% {
+    transform: translate3d(44vw, 12vh, 0) rotate(4deg) scale(0.88);
+  }
+}
+
+@keyframes sorceressHoverBob {
+  0%, 100% {
+    transform: translate3d(0, -6px, 0);
+  }
+  50% {
+    transform: translate3d(0, 7px, 0);
+  }
+}
+
+@keyframes starStreakSlide {
+  0% {
+    opacity: 0;
+    transform: translate3d(55vw, -10vh, 0) scaleX(0.6);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-65vw, 14vh, 0) scaleX(1.35);
+  }
+}
+
+@keyframes cinemaKenBurnsPan {
+  0% {
+    transform: scale(1.04) translate3d(-1.5%, 0.5%, 0);
+  }
+  100% {
+    transform: scale(1.14) translate3d(1.5%, -1%, 0);
+  }
+}
+
+.sorceress-flight-stage {
+  animation: sorceressWorldFlightArc 8.6s cubic-bezier(0.32, 0.04, 0.25, 1) forwards;
+}
+
+.sorceress-flight-bob {
+  animation: sorceressHoverBob 1.15s ease-in-out infinite;
+}
+
+.cinema-ken-burns {
+  animation: cinemaKenBurnsPan 8.8s ease-out forwards;
+}
+
+.star-streak-1 {
+  animation: starStreakSlide 1.7s linear infinite;
+}
+.star-streak-2 {
+  animation: starStreakSlide 2.2s linear 0.45s infinite;
+}
+.star-streak-3 {
+  animation: starStreakSlide 1.9s linear 0.95s infinite;
+}
+.star-streak-4 {
+  animation: starStreakSlide 2.5s linear 1.3s infinite;
+}
+
+/* ==========================================================================
+   Magic Bubble Pop — Animated Intro Title & Rising Crystal Orbs
+   ========================================================================== */
+@keyframes introWordPopIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 38px, 0) scale(0.72);
+    filter: blur(8px);
+  }
+  68% {
+    opacity: 1;
+    transform: translate3d(0, -6px, 0) scale(1.06);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes introTitleLevitate {
+  0%, 100% {
+    transform: translate3d(0, -5px, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, 6px, 0) scale(1.025);
+  }
+}
+
+@keyframes introAuraPulse {
+  0%, 100% {
+    opacity: 0.48;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes introCrystalOrbRise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 36vh, 0) scale(0.55);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -38vh, 0) scale(1.12);
+  }
+}
+
+.intro-word-1 {
+  animation: introWordPopIn 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+
+.intro-word-2 {
+  animation: introWordPopIn 0.76s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+}
+
+.intro-word-3 {
+  animation: introWordPopIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
+}
+
+.intro-title-float {
+  animation: introTitleLevitate 2.6s ease-in-out infinite;
+}
+
+.intro-aura-pulse {
+  animation: introAuraPulse 2.4s ease-in-out infinite;
+}
+
+.intro-crystal-orb-1 {
+  animation: introCrystalOrbRise 3.4s ease-in-out 0s infinite;
+}
+.intro-crystal-orb-2 {
+  animation: introCrystalOrbRise 3.9s ease-in-out 0.45s infinite;
+}
+.intro-crystal-orb-3 {
+  animation: introCrystalOrbRise 3.2s ease-in-out 0.9s infinite;
+}
+.intro-crystal-orb-4 {
+  animation: introCrystalOrbRise 4.1s ease-in-out 0.25s infinite;
+}
+.intro-crystal-orb-5 {
+  animation: introCrystalOrbRise 3.6s ease-in-out 0.7s infinite;
+}
+.intro-crystal-orb-6 {
+  animation: introCrystalOrbRise 3.5s ease-in-out 1.15s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .score-popup-float,
+  .world-slide-next,
+  .world-slide-prev,
+  .sorceress-flight-stage,
+  .sorceress-flight-bob,
+  .cinema-ken-burns,
+  .star-streak-1,
+  .star-streak-2,
+  .star-streak-3,
+  .star-streak-4,
+  .intro-word-1,
+  .intro-word-2,
+  .intro-word-3,
+  .intro-title-float,
+  .intro-aura-pulse,
+  .intro-crystal-orb-1,
+  .intro-crystal-orb-2,
+  .intro-crystal-orb-3,
+  .intro-crystal-orb-4,
+  .intro-crystal-orb-5,
+  .intro-crystal-orb-6 {
+    animation: none !important;
+  }
+}
